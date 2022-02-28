@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Chemex.Models.Db;
 
 namespace chemex
 {
@@ -20,6 +21,14 @@ namespace chemex
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //TODO: ask DNK about connection strings
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<UserContext>(options => options.UseMySqlServer(connection));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthentificationScheme).AddCookie(options => 
+            {
+                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/account/login");
+            });
 
             services.AddControllersWithViews();
 
@@ -49,6 +58,9 @@ namespace chemex
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
