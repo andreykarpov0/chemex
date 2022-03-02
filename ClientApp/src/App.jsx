@@ -9,11 +9,13 @@ import './App.css';
 import Auth from './windows/Auth';
 import Home from './windows/Home';
 import Reg from './windows/Reg';
+import Menu from './windows/Menu';
 
 export default function App({ history, ...props }) {
   return (
     <div>
-        <h1>Наше приложение!</h1>
+        <h1>Chemex</h1>
+        <Menu/>
         <Switch>
             <Route path="/home" component={Home}/>
             <Route path="/reg" component={Reg}/>
