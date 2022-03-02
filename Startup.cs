@@ -22,13 +22,13 @@ namespace chemex
         public void ConfigureServices(IServiceCollection services)
         {
             //TODO: ask DNK about connection strings
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            /*string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<UserContext>(options => options.UseMySqlServer(connection));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthentificationScheme).AddCookie(options => 
             {
                 options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/account/login");
-            });
+            });*/
 
             services.AddControllersWithViews();
 
