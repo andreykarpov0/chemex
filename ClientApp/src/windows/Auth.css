@@ -1,7 +1,56 @@
 .text{
-    margin:0;
+    margin:2px;
+    color: #2E5266;
+    width: 80%;
 }
 
 .formTextInput{
+    background-color: #B5C9C3;
+    color: #2E5266;
+    border: 1px solid #B5C9C3;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.formSubmitBtn{
+    margin-top: 4px;
+    border: 2px solid #2E5266;
+    background-color: #CFD8D7;
+    color: #2E5266;
+    width: 80px;
+    text-align: center;
+    align-items: center;
+    margin-left: 1px;
+}
+
+input{
+    margin-left: 1px;
+}
+
+.auth{
+    position: fixed;
+    top: 20%;
+    bottom: 40%;
+    left: 40%;
+    right: 40%;
+    display: flex;
+    align-items: center;
+    background-color: #CFD8D7;
+    flex-direction: column;
+    border: 3px solid #2E5266;
+    border-radius: 10px;
+}
+
+.authDiv{
+    margin: auto;
+    width: 100%;
+    height: 100%;
     
+}
+
+.formSubmitBtn:hover{
+    background-color: #2E5266;
+    color: #CFD8D7;
 }

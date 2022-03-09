@@ -1,4 +1,15 @@
-a{
+.menuUrl{
     text-decoration: none;
-    color: #32322C;
+    color: #2E5266;
+    padding: 5px;
+    color: #2E5266;
+    border: 1px solid #2E5266;
+    border-radius: 3px;
+    background-color: #CFD8D7;
+    margin: 3px;
+}
+
+.menu{
+    margin: 10px;
+    margin-left: 1px;
 }

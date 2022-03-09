@@ -12,10 +12,12 @@ import Reg from './windows/Reg';
 import Menu from './windows/Menu';
 
 export default function App({ history, ...props }) {
+
+const arr = [{url: "/home", name : "Домой"}, {url: "/auth", name : "Авторизироваться"}, {url: "/reg", name : "Зарегистрироваться"}];
   return (
-    <div>
+    <div className="mainBody"> 
         <h1>Chemex</h1>
-        <Menu/>
+        <Menu items={arr}/>
         <Switch>
             <Route path="/home" component={Home}/>
             <Route path="/reg" component={Reg}/>

@@ -2,12 +2,16 @@ import React from 'react'
 
 import './Menu.css';
 
-export default function Home() {
+export default function Home({items, ...props}) {
   return (
-    <div>
-        <hr />
-        <a href="/home">Домой</a> <a href="/auth">Авторизироваться</a> <a href="/reg">Зарегистрироваться</a>
-        <hr />
+    
+    <div className="menu">
+          {
+          items.map((el) => 
+            <a className="menuUrl" href={el.url}>{el.name}</a>
+          )}
     </div>
   )
 }
+
+//Home.defaultProps = {items : {123}}
