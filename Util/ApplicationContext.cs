@@ -1,4 +1,4 @@
-using Chemex.Models;
+using chemex.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace chemex.Util{ 

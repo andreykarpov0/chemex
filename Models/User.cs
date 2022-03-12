@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace Chemex.Models{ 
+namespace chemex.Models{ 
 
     [Index("Login", IsUnique = true, Name = "idxLogin")]
     [Index("Email", IsUnique = true, Name = "idxEmail")]
