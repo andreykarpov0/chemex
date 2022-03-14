@@ -1,17 +1,15 @@
 import React from 'react'
 
-import './Menu.css';
+import './Home.css';
+import LabElement from './LabElement';
 
-export default function Home({items, ...props}) {
+export default function Home() {
+  const testList = [{url:"/1", name:"one"}]
   return (
-    
-    <div className="menu">
-          {
-          items.map((el) => 
-            <a className="menuUrl" href={el.url}>{el.name}</a>
-          )}
+    <div>
+        {
+        testList.map((el) => <LabElement name={el.name} url={el.name}/>)
+        }
     </div>
   )
 }
-
-//Home.defaultProps = {items : {123}}
