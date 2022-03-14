@@ -31,17 +31,12 @@ namespace chemex.Controllers
                         ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
                         // установка аутентификационных куки
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-                        LoginResultModel result = new LoginResultModel();
-                        result.loginResult = LoginResults.Success;
-                        return Json(result);
+                        return Json(ResultModel.ResultOK());
                     }
-                    else
-                    {
-                        return Json("not ok");
-                    }
+                    return Json(ResultModel.ResultError("Пользователь не найден"));
                 }
             }
-            return Json(model);
+            return Json(ResultModel.ResultError("Ошибка валидации на стороне сервера"));
         }
 
         [Route("/register")]
@@ -52,32 +47,22 @@ namespace chemex.Controllers
             {
                 using (ApplicationContext app = new ApplicationContext())
                 {
-                    RegisterResultModel result = new RegisterResultModel();
-                    //Check is mail or login already used
-                    var user = await app.Users.FirstOrDefaultAsync(u => u.Email == model.Email);                    
+                    var user = await app.Users.FirstOrDefaultAsync(u => u.Email == model.Email || u.Login == model.Login);                    
                     if(user != null)
                     {
-                        result.registrationResult = RegisterResults.EmailIsUsed;
-                        return Json(result);
+                        return Json(ResultModel.ResultError("Email or login is used"));
                     }
-                    user = await app.Users.FirstOrDefaultAsync(u => u.Login == model.Login);
-                    if(user != null)
-                    {
-                        result.registrationResult = RegisterResults.LoginIsUsed;
-                        return Json(result);
-                    }
-                    //add new user to database
+
                     User newUser = new User { Email = model.Email, Login = model.Login, Password = model.Password};
                     await app.Users.AddAsync(newUser);
-                    //login user
+
                     var claims = new List<Claim> { 
                         new Claim(ClaimsIdentity.DefaultNameClaimType, model.Login)
                     };
                     ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-                    //init result
-                    result.registrationResult = RegisterResults.Success;
-                    return Json(result);
+
+                    return Json(ResultModel.ResultOK());
                 }
             }
             return Json(model);
