@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LabElement from './labElement';
+import labElement from './labElement';
 
 import './Home.css';
 
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
         {testList.map((el) => {
-            <LabElement name={el.name} url={el.url}/>
+            <labElement name={el.name} url={el.url}/>
         })}
     </div>
   )
