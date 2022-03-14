@@ -5,7 +5,7 @@ import './Reg.css';
 export default function Reg() {
   return (
     <div>
-      <h1>регестрация</h1>
+      <h1>регистрация</h1>
       <form>
         <p>Имя</p>
         <input type="text"/>
