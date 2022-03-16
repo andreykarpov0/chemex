@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Menu.css';
+
 import './LabElement.css';
 
 export default function LabElement({name, url, ...props}) {

@@ -1,10 +1,13 @@
 import React from 'react'
 
 import './Auth.css';
+import Menu from '../Components/Menu';
+import GetMenuItems from '../Components/GetMenuItems';
 
 export default function Auth() {
   return (
     <div className="auth">
+       <Menu items={GetMenuItems()}/>
       <div className="authDiv">
         <form action="">
           <p className="text">Логин / почта</p>

@@ -10,15 +10,15 @@ import Auth from './windows/Auth';
 import Home from './windows/Home';
 import Main from './windows/Main';
 import Reg from './windows/Reg';
-import Menu from './windows/Menu';
+// import '../Components/Menu';
+
+
+
 
 export default function App({ history, ...props }) {
 
-const arr = [{url: "/home", name : "Домой"}, {url: "/auth", name : "Авторизироваться"}, {url: "/reg", name : "Зарегистрироваться"}];
   return (
     <div className="mainBody"> 
-        <h1>Chemex</h1>
-        <Menu items={arr}/>
         <Switch>
             <Route path="/home" component={Home}/>
             <Route path="/main" component={Main}/>
