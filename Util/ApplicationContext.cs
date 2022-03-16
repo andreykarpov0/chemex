@@ -6,13 +6,20 @@ namespace chemex.Util{
         public DbSet<User> Users{ get; set; }
 
         public ApplicationContext() {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();
+        }
+
+        public bool Recreate(){
+            bool succes;
+            succes = Database.EnsureDeleted();
+            succes = Database.EnsureCreated();
+            return succes;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;user=root;password=rootroot;database=chemex;");
+            //optionsBuilder.UseMySQL("server=localhost;user=root;password=rootroot;database=chemex;");
+            optionsBuilder.UseMySQL("server=localhost;user=root;password=root;database=chemex;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

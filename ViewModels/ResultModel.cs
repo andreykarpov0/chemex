@@ -7,24 +7,24 @@ namespace chemex.ViewModels
 {
     public class ResultModel
     {
-        public Results status;
-        public object Response;
-        public string Message;
+        public Results status {get; set;}
+        public object Response {get; set;}
+        public string Message {get; set;}
 
         public static ResultModel ResultOK(){
-            return new ResultModel() {status = Results.Success};
+            return new ResultModel() {status = Results.Success, Message = "Успешно выполнено"};
         }
         public static ResultModel ResultOK(object response){
-            return new ResultModel() {status = Results.Success, Response = response};
+            return new ResultModel() {status = Results.Success, Message = "Успешно выполнено", Response = response};
         }
-        public static ResultModel ResultError(string message){
-            return new ResultModel() {status = Results.Success, Message = message};
+        public static ResultModel ResultError(string message = "Ошибка"){
+            return new ResultModel() {status = Results.Error, Message = message};
         }
     }
 
     public enum Results
     {
-        Success,
+        Success = 0,
         Error
     }
 }

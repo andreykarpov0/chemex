@@ -54,18 +54,14 @@ namespace chemex.Controllers
                     }
 
                     User newUser = new User { Email = model.Email, Login = model.Login, Password = model.Password};
-                    await app.Users.AddAsync(newUser);
+                    app.Users.Add(newUser);
 
-                    var claims = new List<Claim> { 
-                        new Claim(ClaimsIdentity.DefaultNameClaimType, model.Login)
-                    };
-                    ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+                    await app.SaveChangesAsync();
 
                     return Json(ResultModel.ResultOK());
                 }
             }
-            return Json(model);
+            return Json(ResultModel.ResultError("Ошибка валидации на стороне сервера"));
         }
     }
 }
