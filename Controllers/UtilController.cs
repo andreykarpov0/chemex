@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using chemex.Util;
+using chemex.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace chemex.Controllers
@@ -13,6 +15,13 @@ namespace chemex.Controllers
                 status = app.Recreate();
             }
             return Json(status);
+        }
+
+        [Route("/gtlist")]
+        [HttpGet]
+        public JsonResult GetListPhones(){
+            var data = new List<string>() {"123", "321", "GOGO"};
+            return Json(ResultModel.ResultOK(data));
         }
     }
 }
