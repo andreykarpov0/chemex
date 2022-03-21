@@ -27,19 +27,18 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
 
     font-family: 'Montserrat', sans-serif;
 }
 
-.log_block {
+.reg_block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     
-    margin-top: 30vh;
+    margin-top: 10vh;
+    margin-right: 10vw;
     padding-top: 5vh;
 
     width: 25vw;
@@ -49,6 +48,37 @@ body {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+#reg_title {
+    margin-bottom: 5%;
+
+    font-weight: 700;
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: #222F2C;
+    user-select: none;
+}
+
+#reg_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 15vw;
+    height: 5.5vh;
+    margin-top: 5%;
+    margin-bottom: 5vh;
+    background-color: #CAB1BD;
+    border-radius: 2px;
+
+    font-size: 1.25vw;
+    font-weight: 700;
+    color: #222F2C;
+    user-select: none;  
+}
+#reg_btn:hover {
+    background-color: #C5AAB7;
+    transition: 0.3s;
+}
 input {
     width: 15vw;
     margin-top: 5%;
@@ -71,44 +101,21 @@ input:focus {
     transition: 0.3s;
 }
 
-#log_btn {
+.log_block {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    
+    margin-top: 2.5vh;
+    margin-right: 10vw;
+    padding: 2vh;
 
-    width: 15vw;
-    height: 5.5vh;
-    margin-top: 5%;
-    margin-bottom: 5vh;
-    background-color: #CAB1BD;
+    width: 25vw;
+    height: auto;
+    background-color: white;
     border-radius: 2px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 
     font-size: 1.25vw;
-    font-weight: 700;
-    color: #222F2C;
-    user-select: none;  
-}
-#log_btn:hover {
-    background-color: #C5AAB7;
-    transition: 0.2s;
-}
-#create_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 15vw;
-    height: 5.5vh;
-    margin-bottom: 5vh;
-    background-color: #f5f5f5;
-    border-radius: 2px;
-
-    font-size: 1.25vw;
-    font-weight: 700;
-    color: #222F2C;
-    user-select: none;  
-}
-#create_btn:hover {
-    background-color: #ececec;
-    transition: 0.2s;
 }
