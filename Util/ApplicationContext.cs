@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace chemex.Util{ 
     public class ApplicationContext: DbContext{ 
         public DbSet<User> Users{ get; set; }
+        public DbSet<Project> Projects{ get; set; }
 
         public ApplicationContext() {
             Database.EnsureCreated();

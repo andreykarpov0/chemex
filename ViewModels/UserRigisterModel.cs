@@ -4,7 +4,7 @@ namespace chemex.ViewModels
 {
     public class UserRigisterModel
     {
-        [Required(ErrorMessage = "ПОльзователь должен иметь эмейл")]
+        [Required(ErrorMessage = "Пользователь должен иметь эмейл")]
         [MaxLength(60)]
         [MinLength(5)]
         public string Email { get; set; }

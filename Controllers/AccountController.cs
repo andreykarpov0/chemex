@@ -15,6 +15,8 @@ namespace chemex.Controllers
 {
     public class AccountController : Controller
     {
+        public static int CurrentAuthorisedUserId;
+
         [Route("/login")]
         [HttpGet]
         public async Task<JsonResult> Authorization(UserLoginModel model){
