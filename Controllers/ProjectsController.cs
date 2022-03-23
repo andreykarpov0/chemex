@@ -64,7 +64,6 @@ namespace chemex.Controllers
                 var user = await app.Users.FirstOrDefaultAsync(u => u.Login == User.Identity.Name);
                 return Json(ResultModel.ResultOK(user.Projects));
             }
-                return Json(ResultModel.ResultError());
         }
     }
 }
