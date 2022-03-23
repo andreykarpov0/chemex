@@ -57,11 +57,11 @@ namespace chemex.Controllers
         }
 
         [Route("/projectList")]
-        public async Task<JsonResult> GetProjectList()
+        public async Task<JsonResult> GetProjectList(int id)
         {
             using (ApplicationContext app = new ApplicationContext())
             {
-                var user = await app.Users.FirstOrDefaultAsync(u => u.Login == User.Identity.Name);
+                var user = await app.Users.Include(u => u.Projects).FirstOrDefaultAsync(u => u.Id == id);
                 return Json(ResultModel.ResultOK(user.Projects));
             }
         }

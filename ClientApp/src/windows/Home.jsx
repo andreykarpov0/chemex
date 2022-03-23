@@ -11,7 +11,7 @@ export default function Home() {
   const [LabeElements,setLabeElements] = useState([])
 
   useEffect(() => {
-    fetch("//projectList")
+    fetch("/projectList")
     .then(res => res.json())
     .then(
         (result) => {
@@ -25,7 +25,7 @@ export default function Home() {
     <div>
       <Menu items={GetMenuItems()}/>
       {
-        LabeElements.map((el) => <LabElement name={el.name} url={el.name}/>)
+        testList.map((el,i) => <LabElement key={i.toString()} name={el.name} url={el.name}/>)
       }
     </div>
   )

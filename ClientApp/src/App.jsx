@@ -26,6 +26,7 @@ export default function App({ history, ...props }) {
             <Route path="/reg" component={Reg}/>
             <Route path="/auth" component={Auth}/>
             <Route path="/ttt" component={Test}/>
+            <Route path="/ttt" component={Test}/>
             <Redirect from='/' to='/main'/>
         </Switch>
     </div>

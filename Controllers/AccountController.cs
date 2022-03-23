@@ -33,7 +33,7 @@ namespace chemex.Controllers
                         ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
                         // установка аутентификационных куки
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
-                        return Json(ResultModel.ResultOK());
+                        return Json(ResultModel.ResultOK(user.Id));
                     }
                     return Json(ResultModel.ResultError("Пользователь не найден"));
                 }
