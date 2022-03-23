@@ -11,7 +11,7 @@ export default function Home() {
   const [LabeElements,setLabeElements] = useState([])
 
   useEffect(() => {
-    fetch("/gtlabElements")
+    fetch("//projectList")
     .then(res => res.json())
     .then(
         (result) => {
