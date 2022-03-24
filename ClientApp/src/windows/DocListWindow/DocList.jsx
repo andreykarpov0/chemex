@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 import './Home.css';
-import LabElement from '../Components/LabElement';
-import Menu from '../Components/Menu';
+import DocView from '...Components/DocumentComponent/DocView';
+import Menu from '.../Components/MenuComponent/Menu';
 import GetMenuItems from '../Components/GetMenuItems';
 
 export default function Home() {
-  const testList = [{url:"/1", name:"one"}]
+  const testList = [{id:"/1", name:"one"}]
 
-  const [LabeElements,setLabeElements] = useState([])
+  const [DocElements,setDocElements] = useState([])
 
   useEffect(() => {
     fetch("/projectList")
@@ -16,7 +16,7 @@ export default function Home() {
     .then(
         (result) => {
             console.log(result);
-            setLabeElements(result.response);
+            setDocElements(result.response);
         }
     )
   },[])
@@ -24,9 +24,7 @@ export default function Home() {
   return (
     <div>
       <Menu items={GetMenuItems()}/>
-      {
-        testList.map((el,i) => <LabElement key={i.toString()} name={el.name} url={el.name}/>)
-      }
+      <DocView List={testList}/>
     </div>
   )
 }

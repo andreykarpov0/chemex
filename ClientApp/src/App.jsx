@@ -6,11 +6,10 @@ import {
   } from "react-router-dom"
 
 import './App.css';
-import Auth from './windows/Auth';
-import Home from './windows/Home';
-import Main from './windows/Main';
-import Reg from './windows/Reg';
-import Test from './windows/Test';
+import Auth from './windows/LogOrSignin/Auth';
+import Home from './windows/DocListWindow/DocList';
+import Main from './windows/WelcomePage/Welcome';
+import Reg from './windows/LogOrSignin/Reg';
 // import '../Components/Menu';
 
 
@@ -21,13 +20,11 @@ export default function App({ history, ...props }) {
   return (
     <div className="mainBody"> 
         <Switch>
-            <Route path="/home" component={Home}/>
-            <Route path="/main" component={Main}/>
+            <Route path="/doclist" component={doclist}/>
+            <Route path="/welcome" component={Main}/>
             <Route path="/reg" component={Reg}/>
             <Route path="/auth" component={Auth}/>
-            <Route path="/ttt" component={Test}/>
-            <Route path="/ttt" component={Test}/>
-            <Redirect from='/' to='/main'/>
+            <Redirect from='/' to='/welcome'/>
         </Switch>
     </div>
   )
