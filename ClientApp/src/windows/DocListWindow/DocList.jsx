@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './Home.css';
 import DocView from '...Components/DocumentComponent/DocView';
-import Menu from '.../Components/MenuComponent/Menu';
+import Menu from '...Components/MenuComponent/Menu';
 import GetMenuItems from '../Components/GetMenuItems';
 
 export default function Home() {
