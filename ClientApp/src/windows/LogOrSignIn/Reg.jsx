@@ -1,8 +1,8 @@
 import React from 'react'
 
 import './Reg.css';
-import Menu from '../Components/Menu';
-import GetMenuItems from '../Components/GetMenuItems';
+import Menu from '../../Components/Menu';
+import GetMenuItems from '../../Components/GetMenuItems';
 
 export default function Reg() {
   return (

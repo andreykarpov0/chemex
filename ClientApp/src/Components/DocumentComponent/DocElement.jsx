@@ -1,7 +1,6 @@
 import React from 'react'
 
 
-import './LabElement.css';
 
 export default function DocElement({name, dateEdit, id, ...props}) {
 
