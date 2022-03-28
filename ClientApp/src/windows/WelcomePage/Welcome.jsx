@@ -8,6 +8,10 @@ export default function Main({...props}) {
         window.location.href = "/reg";
     }
 
+    const eventActAuth = () => {
+        window.location.href = "/auth";
+    }
+
     return ( 
     <div className="mainPage">
         <p id="title">Chemex</p>
@@ -16,7 +20,7 @@ export default function Main({...props}) {
                 <p id="welcome"> Добро пожаловать!</p> 
                 <div className="button_row">
                     <div id="reg_btn" onClick={eventAct}>Создать аккаунт</div>
-                    <div id="log_btn">Войти</div>
+                    <div id="log_btn" onClick={eventActAuth}>Войти</div>
                 </div>
             </div>
         </div>
