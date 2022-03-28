@@ -27,8 +27,9 @@ namespace chemex.Util{
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             User user1 = new User() { Id = 1, Login = "Admin", Email = "test@email.ru", Password = "12345qwert"};
+            User user2 = new User() { Id = 2, Login = "Admin2", Email = "test2@email.ru", Password = "12345qwert2" };
 
-            modelBuilder.Entity<User>().HasData(user1);
+            modelBuilder.Entity<User>().HasData(user1, user2);
 
             Project pr1 = new Project() { Id = 1, 
             Name = "Проект 1", 
@@ -36,7 +37,25 @@ namespace chemex.Util{
             LastModifiedTime = DateTime.Now.AddDays(1), 
             UserId = user1.Id};
 
-            modelBuilder.Entity<Project>().HasData(pr1);
+            Project pr2 = new Project()
+            {
+                Id = 2,
+                Name = "Project2",
+                CreationTime = DateTime.Now,
+                LastModifiedTime = DateTime.Now.AddHours(1),
+                UserId = user1.Id
+            };
+
+            Project pr3 = new Project()
+            {
+                Id = 2,
+                Name = "Project_user2",
+                CreationTime = DateTime.Now,
+                LastModifiedTime = DateTime.Now.AddHours(8),
+                UserId = user2.Id
+            };
+
+            modelBuilder.Entity<Project>().HasData(pr1, pr2, pr3);
         }
     }
 }
