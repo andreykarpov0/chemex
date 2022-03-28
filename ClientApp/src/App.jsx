@@ -6,10 +6,10 @@ import {
   } from "react-router-dom"
 
 import './App.css';
-import Auth from './windows/LogOrSignin/Auth';
+import Auth from './windows/LogOrSignIn/Auth';
 import doclist from './windows/DocListWindow/DocList';
 import Welcome from './windows/WelcomePage/Welcome';
-import Reg from './windows/LogOrSignin/Reg';
+import Reg from './windows/LogOrSignIn/Reg';
 // import '../Components/Menu';
 
 
