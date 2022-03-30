@@ -11,6 +11,11 @@ Todo разобраться зачем это надо
 */
 
 export default function Auth() {
+
+  const eventAct = () => {
+    window.location.href = "/reg";
+}
+
   return (
     <div>
       <p id="title">Chemex</p>
@@ -19,7 +24,7 @@ export default function Auth() {
           <input id="login" type="login" placeholder="Логин"/>
           <input id="password" type="password" placeholder="Пароль"/>
           <div id="log_btn">Войти</div>
-          <div id="create_btn">Создать аккаунт</div>
+          <div id="create_btn" onClick={eventAct}>Создать аккаунт</div>
         </div>
       </div>
     </div>
