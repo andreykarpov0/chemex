@@ -65,5 +65,17 @@ namespace chemex.Controllers
             }
             return Json(ResultModel.ResultError("Ошибка валидации на стороне сервера"));
         }
+
+        [Route("/currentUserID")]
+        public async Task<JsonResult> GetCurrentUserID()
+        {
+            using (ApplicationContext app = new ApplicationContext())
+            {
+                var user = await app.Users.FirstOrDefaultAsync(u => u.Login == User.Identity.Name);
+                if (user == null)
+                    return Json(ResultModel.ResultError("user is not authorised"));
+                return Json(ResultModel.ResultOK(user.Id));
+            }
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace chemex.Util{
 
             Project pr3 = new Project()
             {
-                Id = 2,
+                Id = 3,
                 Name = "Project_user2",
                 CreationTime = DateTime.Now,
                 LastModifiedTime = DateTime.Now.AddHours(8),

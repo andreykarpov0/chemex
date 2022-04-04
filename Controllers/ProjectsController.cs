@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using chemex.ViewModels;
 using chemex.Util;
 using chemex.Models;
+using System.Linq;
 
 namespace chemex.Controllers
 {
@@ -20,16 +21,19 @@ namespace chemex.Controllers
                 {
                     //TODO: спросить нормально ли я получаю авторизованнного пользователя
                     User CurrentUser = await app.Users.FirstOrDefaultAsync(u => u.Login == User.Identity.Name);
-                    var Project = new Project 
-                    { 
+                    if (CurrentUser == null)
+                        return Json(ResultModel.ResultError("not authorised user"));
+                    
+                    var Project = new Project
+                    {
                         Name = model.Name,
                         CreationTime = DateTime.Now,
                         LastModifiedTime = DateTime.Now,
-                        User = CurrentUser
+                        UserId = CurrentUser.Id
                     };
                     app.Projects.Add(Project);
                     app.SaveChanges();
-                    return Json(ResultModel.ResultOK(Project));
+                    return Json(ResultModel.ResultOK());
                 }
             }
             return Json(ResultModel.ResultError("Model isnt valid"));
@@ -62,7 +66,16 @@ namespace chemex.Controllers
             using (ApplicationContext app = new ApplicationContext())
             {
                 var user = await app.Users.Include(u => u.Projects).FirstOrDefaultAsync(u => u.Id == id);
-                return Json(ResultModel.ResultOK(user.Projects));
+                if (user == null)
+                    return Json(ResultModel.ResultError("user not found"));
+                var projects = user.Projects.Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.CreationTime,
+                    p.LastModifiedTime
+                });
+                return Json(ResultModel.ResultOK(projects));
             }
         }
     }
