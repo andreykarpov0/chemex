@@ -19,7 +19,6 @@ namespace chemex.Controllers
             {
                 using(ApplicationContext app = new ApplicationContext())
                 {
-                    //TODO: спросить нормально ли я получаю авторизованнного пользователя
                     User CurrentUser = await app.Users.FirstOrDefaultAsync(u => u.Login == User.Identity.Name);
                     if (CurrentUser == null)
                         return Json(ResultModel.ResultError("not authorised user"));
@@ -41,22 +40,47 @@ namespace chemex.Controllers
 
         [Route("/projectRemoving")]
         [HttpGet]
-        public async Task<JsonResult> RemoveProject(ProjectHandlingModel model)
+        public async Task<JsonResult> RemoveProject(int projectID)
         {
             using (ApplicationContext app = new ApplicationContext())
             {
-                Project? project = await app.Projects.FirstOrDefaultAsync(u => u.Name == model.Name);
+                Project? project = await app.Projects.FirstOrDefaultAsync(u => u.Id == projectID);
                 if (project == null)
-                {
-                    app.Projects.Remove(project);
-                    //TODO: спросить нудно ли отдельно удалять у Юзера
-                    var user = await app.Users.FirstOrDefaultAsync(u => u.Login == project.User.Login);
-                    user.Projects.Remove(project);
-                    //
-                    app.SaveChanges();
-                    return Json(ResultModel.ResultOK());
-                }
-                return Json(ResultModel.ResultError("Несуществующее имя"));
+                    return Json(ResultModel.ResultError("project doesnt exist"));
+
+                app.Projects.Remove(project);
+                app.SaveChanges();
+                return Json(ResultModel.ResultOK());
+                
+            }
+        }
+
+        [Route("/projectChanging")]
+        public async Task<JsonResult> ChangeProject(int projectID, string newName)
+        {
+            using (ApplicationContext app = new ApplicationContext())
+            {
+                Project project = await app.Projects.FirstOrDefaultAsync(p => p.Id == projectID);
+                if (project == null)
+                    return Json(ResultModel.ResultError("project doesnt exist"));
+                project.Name = newName;
+                project.LastModifiedTime = DateTime.Now;
+                await app.SaveChangesAsync();
+                return Json(ResultModel.ResultOK());
+            }
+        }
+
+        [Route("/updateLastModifiedTime")]
+        public async Task<JsonResult> UpdateLastModifiedTime(int projectID)
+        {
+            using (ApplicationContext app = new ApplicationContext())
+            {
+                Project project = await app.Projects.FirstOrDefaultAsync(p => p.Id == projectID);
+                if (project == null)
+                    return Json(ResultModel.ResultError("project doesnt exist"));
+                project.LastModifiedTime = DateTime.Now;
+                await app.SaveChangesAsync();
+                return Json(ResultModel.ResultOK());
             }
         }
 
